@@ -1,30 +1,29 @@
-# React + TypeScript + Vite
+# Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  [] - adicionar axios
+  [] - adicionar jest com react testing library
+  [] - criar catalogo de produtos por um api ( tem o supabase )
+  [] - pagina de listagem de produtos, pesquisar e filtrar (categoria,tipo do produto e mais algum que veja pertinente colocar)
+  [] - pagina de detalhes do produto
+  [] - pagina de carrinho ( exibindo a quantidade total de itens no carrinho )
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+Requisitos: Desenvolva uma aplicação de catálogo de produtos com as seguintes funcionalidades: 
+	•	Listagem de Produtos: Exiba uma lista de produtos a partir de um arquivo JSON simulando uma API. 
+	•	Detalhes do Produto: Ao clicar em um produto, exiba os detalhes do mesmo. 
+	•	Filtro e Pesquisa: Implemente um filtro e uma barra de pesquisa para filtrar os produtos por nome ou categoria. 
+	•	Responsividade: A aplicação deve ser responsiva para diferentes dispositivos. 
+	•	EXTRA: Adicionar ao Carrinho: Possibilidade de adicionar produtos a um carrinho de compras, exibindo a quantidade total de itens no carrinho. 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+Critérios de Avaliação: 
+	•	Uso do TypeScript: Utilize TypeScript para tipagem estática e fornecer uma experiência de desenvolvimento mais segura. 
+	•	Componentização: Divida a aplicação em componentes reutilizáveis, mantendo um código limpo e organizado. 
+	•	Gerenciamento de Estado: Utilize o gerenciamento de estado do React de maneira eficiente, utilizando, por exemplo, Context API ou Redux. 
+	•	Manipulação de Dados: Manipule os dados dos produtos de forma eficiente, utilizando tipos e interfaces do TypeScript. 
+	•	Estilo e Interface: A interface deve ser limpa, intuitiva e responsiva, utilizando preferencialmente CSS ou algum pré-processador. 
+	•	Implantação: Criar um container Docker da sua aplicação.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Observações: 
+Este é um teste prático destinado a avaliar suas habilidades de desenvolvimento React com TypeScript. Valorizamos a clareza do código, a utilização adequada do TypeScript, a estrutura organizada e a funcionalidade correta da aplicação. 
