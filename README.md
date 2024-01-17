@@ -6,6 +6,7 @@
   [] - pagina de listagem de produtos, pesquisar e filtrar (categoria,tipo do produto e mais algum que veja pertinente colocar)
   [] - pagina de detalhes do produto
   [] - pagina de carrinho ( exibindo a quantidade total de itens no carrinho )
+	[] - useDebounce para o search
 
 
 
