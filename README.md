@@ -1,12 +1,14 @@
 # Task
 
-  [] - adicionar axios
+  [] - adicionar axios [https://www.youtube.com/watch?v=q_uRFergAVo, https://www.youtube.com/watch?v=uNFB9EbQz90]
+	[] - router [https://reactrouter.com/en/main/start/tutorial]
   [] - adicionar jest com react testing library
   [] - criar catalogo de produtos por um api ( tem o supabase )
   [] - pagina de listagem de produtos, pesquisar e filtrar (categoria,tipo do produto e mais algum que veja pertinente colocar)
   [] - pagina de detalhes do produto
   [] - pagina de carrinho ( exibindo a quantidade total de itens no carrinho )
 	[] - useDebounce para o search
+	
 
 
 

@@ -8,53 +8,20 @@ import { useSearchParams } from 'react-router-dom';
 
 
 function App() {
-  const { totalPriceItemsCartFormated, totalItemsCartCount, categories } = useContext(CatalogContext) as CatalogType;
-  const [searchParams, setSearchParams] = useSearchParams();
-  
-  console.log(searchParams)
-  
-  const handleRouter = (indexCategory: string) => {
-    setSearchParams({ category: indexCategory });
-    const {size} = searchParams
-    
-    if (size === indexCategory){
-      searchParams.delete("category");
-      setSearchParams(searchParams);
-    }
-    
-    if (indexCategory == '0') {
-      searchParams.delete("category");
-      setSearchParams(searchParams);
-    }
-    
-  }
-  
+  const { totalPriceItemsCartFormated, totalItemsCartCount } = useContext(CatalogContext) as CatalogType;
+
   return (
     <div>
-      
+
       <div>
         <h5>Cart:{totalPriceItemsCartFormated}</h5>
         <h5>Total:{totalItemsCartCount}</h5>
       </div>
-      
+
       <div><input type='search' placeholder='buscar produto' /></div>
-      
-      <div>
-        <div>
-          <label>Tudo</label>
-          <input type="checkbox" title='categories' onClick={() => handleRouter(0)} />
-        </div>
-          {categories.map((category: Category) => 
-            <div key={category.id}>
-              <label>{category.name}</label>
-              <input type="checkbox" value={category.name} title='categories' onClick={() => handleRouter(category.id)}  />
-            </div>
-           )}
-      </div>
-      
+
+      <FilterProduct />
       <CatalogProductList />
-      
-      
     </div>
   )
 }
@@ -63,7 +30,7 @@ function App() {
 const CatalogProductList = () => {
   const { products, addProductCart } = useContext(CatalogContext) as CatalogType;
 
-  return(
+  return (
     <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
       {products.map((product: ProductType) => (
         <div key={product.id}>
@@ -75,6 +42,37 @@ const CatalogProductList = () => {
       ))}
     </div>
   )
+}
+
+
+export const FilterProduct = () => {
+  const { categories } = useContext(CatalogContext) as CatalogType;
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const handleRouter = (indexCategory: string) => {
+    setSearchParams({ category: indexCategory });
+
+    if (indexCategory == '0') {
+      searchParams.delete("category");
+      setSearchParams(searchParams);
+    }
+  }
+
+  return (
+    <div>
+      <div>
+        <label>Tudo</label>
+        <input type="checkbox" title='categories' onClick={() => handleRouter('0')} />
+      </div>
+      {categories.map((category: Category) =>
+        <div key={category.id}>
+          <label>{category.name}</label>
+          <input type="checkbox" value={category.name} title='categories' onClick={() => handleRouter(category.id)} />
+        </div>
+      )}
+    </div>
+  )
+
 }
 
 export default App
