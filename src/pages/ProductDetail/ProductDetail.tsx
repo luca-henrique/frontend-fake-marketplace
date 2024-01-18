@@ -1,3 +1,8 @@
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+} from "@/components/ui/card"
+
 export const ProductDetail = () => {
-  return(<>Detail</>)
+  return (<Card ><Button>Exemplo</Button></Card>)
 }

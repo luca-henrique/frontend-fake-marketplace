@@ -1,48 +1,35 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useContext, useState } from 'react';
-import { ProductType } from './types/Product';
+import { useContext } from 'react';
 import { CatalogContext, CatalogType } from './contexts/ProductContext';
-import { numberFormatBr } from './util/numberFormater';
 import { Category } from './types/Category';
 import { useSearchParams } from 'react-router-dom';
+import { CatalogProductList } from './components/atomic/organisms/CatalogProductList/CatalogProductList';
+import { Header } from './components/atomic/organisms/Header/Header';
 
 
 function App() {
   const { totalPriceItemsCartFormated, totalItemsCartCount } = useContext(CatalogContext) as CatalogType;
 
   return (
-    <div>
+    <div className='bg-black'>
+      <Header />
 
-      <div>
-        <h5>Cart:{totalPriceItemsCartFormated}</h5>
-        <h5>Total:{totalItemsCartCount}</h5>
+     <div>
+        <h5>Total:{totalPriceItemsCartFormated}</h5>
+        <h5>Quantidade:{totalItemsCartCount}</h5>
       </div>
+      {/*
 
       <div><input type='search' placeholder='buscar produto' /></div>
 
-      <FilterProduct />
+      <FilterProduct /> */}
       <CatalogProductList />
     </div>
   )
 }
 
 
-const CatalogProductList = () => {
-  const { products, addProductCart } = useContext(CatalogContext) as CatalogType;
 
-  return (
-    <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-      {products.map((product: ProductType) => (
-        <div key={product.id}>
-          <img title='product-image' src={product.images[0]} alt='capa' width='200' />
-          <h5>{product.title}</h5>
-          <h5>{numberFormatBr(product.price)}</h5>
-          <button onClick={() => addProductCart(product)}>add to cart</button>
-        </div>
-      ))}
-    </div>
-  )
-}
 
 
 export const FilterProduct = () => {
