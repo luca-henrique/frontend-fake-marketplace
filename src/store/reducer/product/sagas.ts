@@ -7,7 +7,7 @@ import {
 
 function* readProduct(): unknown  {
   try {
-    const data = yield call(api.get, `/`);
+    const {data} = yield call(api.get, 'products');
     yield put(readProductsSuccess(data));
   } catch (e) {
     console.log(e);
@@ -16,7 +16,7 @@ function* readProduct(): unknown  {
 
 function* readCategories():unknown {
   try {
-    const data = yield call(api.get, `/`);
+    const {data} = yield call(api.get, `/`);
     yield put(readCategoriesSuccess(data));
   } catch (e) {
     console.log(e);

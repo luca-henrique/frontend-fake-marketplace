@@ -1,17 +1,17 @@
-import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
+import { Action, configureStore, ThunkAction, Tuple} from '@reduxjs/toolkit';
 import createSagaMiddleware from '@redux-saga/core';
-
-import logger from 'redux-logger';
 
 import { rootSaga } from './reducer/rootSagas';
 import { rootReducer } from './reducer/rootReducer';
 
+import logger from 'redux-logger';
+
 const sagaMiddleware = createSagaMiddleware();
-const middleware = [sagaMiddleware];
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware,
+  //@ts-expect-error: Erro type tuple
+  middleware: () => new Tuple(sagaMiddleware, logger),
 });
 
 sagaMiddleware.run(rootSaga);

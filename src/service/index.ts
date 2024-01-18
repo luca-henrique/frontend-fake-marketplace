@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const dev = 'https://berro-tech-api.herokuapp.com/v1';
+export const dev = 'https://api.escuelajs.co/api/v1';
 
 const api = axios.create({ baseURL: dev });
 

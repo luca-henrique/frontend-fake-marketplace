@@ -8,16 +8,11 @@ import { Header } from './components/atomic/organisms/Header/Header';
 
 
 function App() {
-  const { totalPriceItemsCartFormated, totalItemsCartCount } = useContext(CatalogContext) as CatalogType;
-
   return (
     <div className='bg-black'>
       <Header />
 
-     <div>
-        <h5>Total:{totalPriceItemsCartFormated}</h5>
-        <h5>Quantidade:{totalItemsCartCount}</h5>
-      </div>
+     
       {/*
 
       <div><input type='search' placeholder='buscar produto' /></div>
