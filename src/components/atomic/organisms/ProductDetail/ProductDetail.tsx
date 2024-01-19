@@ -3,7 +3,7 @@ import "./style.css";
 import { useState } from "react";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { addProductCart } from "@/store/reducer/cart/actions";
-
+import {toast} from "react-toastify"
 interface ProductDetailProps {
   product: ProductType;
   onClose: () => void;
@@ -16,10 +16,22 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, onClose }) => {
   const handleThumbnailClick = (image: string) => {
     setSelectedImage(image);
   };
+  
+  const notify = () => toast.success('Produto adicionado no carrinho de compras', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
 
   const dispatch = useAppDispatch();
   const addItemProductCart = () => {
     dispatch(addProductCart(product));
+    notify()
   };
 
   return (
