@@ -10,9 +10,13 @@ function App() {
   return (
     <div className='bg-black'>
       <Header />
-      <Input onChange={setInputSearch} />
-      <FiltersProduct /> 
-      <CatalogProductList />
+      <div className='py-6 px-4 md:px-22 lg:px-36'>
+        <Input onChange={setInputSearch} />
+        <div className='flex flex-row'>
+          <CatalogProductList />
+          <FiltersProduct /> 
+        </div>
+      </div>
     </div>
   )
 }

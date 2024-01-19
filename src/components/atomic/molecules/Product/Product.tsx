@@ -13,17 +13,14 @@ interface ProductTypeProps extends ProductType {
 }
 
 export const Product = ({ id, title, price, description, category, images, onClick, handleOpenDetailProduct }: ProductTypeProps) => {
-  
-  
   const navigate = useNavigate()
-  
 
   const handleDetailProduct = (productId:number) => {
     navigate(`/product-detail/${productId}`)
   }
   
   return(
-    <div className="w-[400px] bg-black mb-4 flex flex-col items-center justify-center p-8 border  border-neutral-900 rounded-xl ">
+    <div className="w-[400px] bg-black mb-4 flex flex-col items-center justify-center p-8 border border-neutral-900 rounded-xl">
       <button onClick={handleOpenDetailProduct}>
         <ProductImage url={images[0]} />
       </button>
@@ -49,7 +46,7 @@ export const Product = ({ id, title, price, description, category, images, onCli
       </div>
       <div className='flex flex-row justify-between w-full mt-2 items-center '>
         <h5 className='text-gray-200 text-lg'>{numberFormatBr(price)}</h5>
-        <Button onClick={() => onClick()}>add to cart</Button>
+        <Button onClick={() => onClick()}>Adicionar ao carrinho</Button>
       </div>
     </div>
   )

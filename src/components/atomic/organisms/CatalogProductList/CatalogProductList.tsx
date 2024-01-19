@@ -23,9 +23,9 @@ const customStyles = {
 
 export const CatalogProductList = () => {
   const {data} = useAppSelector((state) => state.product)
-  
   const [visibleModalDetail, setVisibleModalDetail] = useState(false);
-  const [product,setProduct] = useState<ProductType | undefined>()
+  const [product,setProduct] = useState<ProductType | undefined>();
+  const dispatch = useAppDispatch();
   
   function handleOpenDetailProduct(item:ProductType) {
     setVisibleModalDetail(true);
@@ -36,13 +36,12 @@ export const CatalogProductList = () => {
     setVisibleModalDetail(false);
   }
   
-  const dispatch = useAppDispatch()
   useEffect(()=> {
     dispatch(readProductsRequest())
   },[])
   
   return (
-    <div className="columns-2 mt-10">
+    <div className="flex flex-row flex-wrap mt-10 gap-8 ">
       {data.map((product: ProductType) => (
         <Product {...product} key={product.id} onClick={() => dispatch(addProductCart(product))} handleOpenDetailProduct={() => handleOpenDetailProduct(product)} />
       ))}
