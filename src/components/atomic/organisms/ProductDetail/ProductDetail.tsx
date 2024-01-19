@@ -5,7 +5,7 @@ import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { addProductCart } from '@/store/reducer/cart/actions';
 
 interface ProductDetailProps {
-  product?: ProductType;
+  product: ProductType;
   onClose: () => void;
 }
 
@@ -22,10 +22,9 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, onClose }) => {
     dispatch(addProductCart(product))
   }
   
-  
   return (
     <div className="bg-gray-900 container-detail">
-      <button className="rounded-full bg-gray-200 text-gray-700 border-1 border-gray-400 px-4 py-2 absolute top-4 right-4">
+      <button className="rounded-full bg-gray-200 text-gray-700 border-1 border-gray-400 px-4 py-2 absolute top-4 right-4" onClick={onClose}>
         Back
       </button>
       <div className="flex gap-4 md:gap-32 items-center p-4 md:p-20 mx-auto text-white">

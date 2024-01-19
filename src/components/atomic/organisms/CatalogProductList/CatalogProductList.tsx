@@ -27,11 +27,10 @@ export const CatalogProductList = () => {
   const [visibleModalDetail, setVisibleModalDetail] = useState(false);
   const [product,setProduct] = useState<ProductType | undefined>()
   
-  function openModal(item:ProductType) {
+  function handleOpenDetailProduct(item:ProductType) {
     setVisibleModalDetail(true);
     setProduct(item)
   }
-
 
   function closeModal() {
     setVisibleModalDetail(false);
@@ -45,9 +44,7 @@ export const CatalogProductList = () => {
   return (
     <div className="columns-2 mt-10">
       {data.map((product: ProductType) => (
-        <div onClick={() => openModal(product)}>
-          <Product {...product} key={product.id} onClick={() => dispatch(addProductCart(product))} />
-        </div>
+        <Product {...product} key={product.id} onClick={() => dispatch(addProductCart(product))} handleOpenDetailProduct={() => handleOpenDetailProduct(product)} />
       ))}
       
       <Modal

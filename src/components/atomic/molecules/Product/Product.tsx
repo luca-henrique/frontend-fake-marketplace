@@ -9,9 +9,10 @@ import { useNavigate } from 'react-router-dom';
 
 interface ProductTypeProps extends ProductType {
   onClick: () => void
+  handleOpenDetailProduct?:() => void
 }
 
-export const Product = ({ id, title, price, description, category, images, onClick }: ProductTypeProps) => {
+export const Product = ({ id, title, price, description, category, images, onClick, handleOpenDetailProduct }: ProductTypeProps) => {
   
   
   const navigate = useNavigate()
@@ -23,7 +24,10 @@ export const Product = ({ id, title, price, description, category, images, onCli
   
   return(
     <div className="w-[400px] bg-black mb-4 flex flex-col items-center justify-center p-8 border  border-neutral-900 rounded-xl ">
-      <ProductImage url={images[0]} />
+      <button onClick={handleOpenDetailProduct}>
+        <ProductImage url={images[0]} />
+      </button>
+      
       <div className='w-full'>
         <h5 className='font-semibold text-xl mb-2 h-auto text-gray-200 mt-2'>{title}</h5>
       </div>
