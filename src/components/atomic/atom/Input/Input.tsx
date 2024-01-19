@@ -27,7 +27,7 @@ export const Input = ({onChange}: IInputWithUseDebaunce) => {
     <div className="relative my-4" ref={inputSearchRef}>
       <input
         className="block z-1 lg:w-1/3 md:w-2/4 w-full p-4 ps-12 text-sm outline-none text-white border border-gray-800 rounded-lg bg-black focus:ring-purpleshade-400 focus:border-purpleshade-400 dark:bg-grayshade-500 dark:border-grayshade-300 dark:placeholde-grayshade-50 dark:text-white dark:focus:ring-purpleshade-400 dark:focus:border-purpleshade-400"
-        placeholder="Search ..."
+        placeholder="Pesquisar ..."
         onFocus={handleFocus}
         onChange={handleChange}
         value={displayValue}

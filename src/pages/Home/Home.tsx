@@ -12,7 +12,7 @@ function App() {
       <Header />
       <div className='py-6 px-4 md:px-22 lg:px-36'>
         <Input onChange={setInputSearch} />
-        <div className='flex flex-row'>
+        <div className='flex sm:flex-row flex-col-reverse'>
           <CatalogProductList />
           <FiltersProduct /> 
         </div>

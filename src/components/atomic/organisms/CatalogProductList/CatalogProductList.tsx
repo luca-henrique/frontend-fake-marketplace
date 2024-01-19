@@ -10,14 +10,18 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 
 const customStyles = {
+  overlay: {
+    backgroundColor: 'transparent',
+  },
   content: {
     top: '50%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
+    padding:"0px !important",
     transform: 'translate(-50%, -50%)',
-    padding:"0px !important"
+    maxWidth: '900px',
   },
 };
 
@@ -47,10 +51,10 @@ export const CatalogProductList = () => {
       ))}
       
       <Modal
+        contentLabel="Product"
+        style={customStyles}
         isOpen={visibleModalDetail}
         onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
       >
         <ProductDetail product={product} onClose={closeModal} />
       </Modal>
