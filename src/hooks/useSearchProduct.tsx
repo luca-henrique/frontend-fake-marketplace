@@ -2,7 +2,6 @@ import { searchProductRequest } from '@/store/reducer/product/actions';
 import { useEffect, useState } from 'react';
 import { useAppDispatch } from './useAppDispatch';
 
-
 export const useSearchProduct = () => {
   const [inputSearch, setInputSearch] = useState<string>('');
   const dispatch = useAppDispatch()

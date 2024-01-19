@@ -5,7 +5,6 @@ import { textShrink } from '@/util/textShrink';
 
 import "./style.css"
 import { ProductImage } from './ProductImage';
-import { useNavigate } from 'react-router-dom';
 
 interface ProductTypeProps extends ProductType {
   onClick: () => void
@@ -13,11 +12,6 @@ interface ProductTypeProps extends ProductType {
 }
 
 export const Product = ({ id, title, price, description, category, images, onClick, handleOpenDetailProduct }: ProductTypeProps) => {
-  const navigate = useNavigate()
-
-  const handleDetailProduct = (productId:number) => {
-    navigate(`/product-detail/${productId}`)
-  }
   
   return(
     <div className="w-[400px] bg-black mb-4 flex flex-col items-center justify-center p-8 border border-neutral-900 rounded-xl">
@@ -33,7 +27,7 @@ export const Product = ({ id, title, price, description, category, images, onCli
           {textShrink(description)}
           <button
             className="font-semibold text-grayshade-100 dark:text-white text-xs ml-1"
-            onClick={() => handleDetailProduct(id)}            
+            onClick={handleOpenDetailProduct}            
           >
             Ler mais
           </button>

@@ -54,7 +54,7 @@ export const Checkout = () => {
             {data?.map((item: ProductCart, index: number) => (
               <Tr key={`${index}-${item?.id}`}>
                 <Td style={{ textAlign: "left" }}>{item?.title}</Td>
-                <Td>{item?.price}</Td>
+                <Td>{numberFormatBr(item?.price)}</Td>
                 <Td>
                   <CheckoutQuantity
                     quantity={item?.countProduct}
@@ -63,7 +63,7 @@ export const Checkout = () => {
                     }
                   />
                 </Td>
-                <Td>{numberFormatBr(item?.price * 1)}</Td>
+                <Td>{numberFormatBr(item?.price * item?.countProduct)}</Td>
               </Tr>
             ))}
           </tbody>
