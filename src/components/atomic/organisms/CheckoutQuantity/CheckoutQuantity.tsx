@@ -15,7 +15,7 @@ export const CheckoutQuantity = (props: CheckoutQuantityProps) => {
       <Button className="bg-violet-800" onClick={() => onAddProduct("+")}>
         +
       </Button>
-      <span className="py-1 px-2 border  border-neutral-900 rounded-md">
+      <span className="py-2 px-4 border  border-neutral-900 rounded-md self-center">
         {quantity}
       </span>
       <Button className="bg-red-400" onClick={() => onAddProduct("-")}>
