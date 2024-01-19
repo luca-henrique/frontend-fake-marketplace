@@ -9,9 +9,15 @@ interface ProductDetailProps {
   onClose: () => void;
 }
 
+const URL_IMG = 'https://picsum.photos/id/1/400/400'
+
 const ProductDetail: React.FC<ProductDetailProps> = ({ product, onClose }) => {
+
   const { id, title, price, description, images, category } = product;
-  const [selectedImage, setSelectedImage] = useState(images[0]);
+  
+  const isExitImageList = images.length > 1
+  const imageList = images.length > 1 ? images : URL_IMG
+  const [selectedImage, setSelectedImage] = useState(imageList);
 
   const handleThumbnailClick = (image: string) => {
     setSelectedImage(image);
@@ -34,6 +40,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, onClose }) => {
     notify()
   };
 
+  
   return (
     <div className="bg-black text-white container-detail">
       <div className="p-6 flex flex-row">
@@ -54,6 +61,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, onClose }) => {
       <div className="flex flex-col sm:flex-row gap-4 px-6 pb-6 sm:px-20 sm:pb-20 items-start">
         <div className="flex flex-row flex-1 w-max gap-4 self-center sm:self-auto">
           <div className="flex flex-row gap-4">
+            {isExitImageList && 
             <ul className="flex flex-col gap-4">
               {images.map((image, index) => (
                 <li key={index}>
@@ -69,7 +77,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, onClose }) => {
                   />
                 </li>
               ))}
-            </ul>
+            </ul>}
 
             <img
               src={selectedImage}
