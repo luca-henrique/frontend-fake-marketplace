@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Product } from '../../molecules/Product/Product';
 import ProductDetail from '../ProductDetail/ProductDetail';
 import Modal from 'react-modal';
-
+import { toast } from 'react-toastify';
 import { readProductsRequest } from '@/store/reducer/product/actions';
 import { addProductCart } from '@/store/reducer/cart/actions';
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -31,6 +31,17 @@ export const CatalogProductList = () => {
   const [product,setProduct] = useState<ProductType | undefined>();
   const dispatch = useAppDispatch();
   
+  const notify = () => toast.success('Produto adicionado no carrinho de compras', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+  
   function handleOpenDetailProduct(item:ProductType) {
     setVisibleModalDetail(true);
     setProduct(item)
@@ -40,6 +51,11 @@ export const CatalogProductList = () => {
     setVisibleModalDetail(false);
   }
   
+  const handleAddProduct = (product:ProductType) => {
+    dispatch(addProductCart(product));
+    notify()
+  }
+  
   useEffect(()=> {
     dispatch(readProductsRequest())
   },[])
@@ -47,7 +63,7 @@ export const CatalogProductList = () => {
   return (
     <div className="flex flex-row flex-wrap mt-10 gap-8 ">
       {data.map((product: ProductType) => (
-        <Product {...product} key={product.id} onClick={() => dispatch(addProductCart(product))} handleOpenDetailProduct={() => handleOpenDetailProduct(product)} />
+        <Product {...product} key={product.id} onClick={() => handleAddProduct(product)} handleOpenDetailProduct={() => handleOpenDetailProduct(product)} />
       ))}
       
       <Modal

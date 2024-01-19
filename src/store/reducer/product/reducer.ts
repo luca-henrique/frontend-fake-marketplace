@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import {
-  readProductsRequest, readProductsSuccess, readCategoriesRequest, readCategoriesSuccess, searchProductSuccess, searchProductByCategorySuccess
+  readProductsRequest, readProductsSuccess, searchProductSuccess, searchProductByCategorySuccess
 } from './actions';
 
 import { initialState } from './initialState';
@@ -12,14 +12,15 @@ export const productReducer = createReducer(initialState, (builder) => {
     })
     .addCase(readProductsSuccess, (state, action) => {
       state.data = action.payload
+      
+      const items = action.payload.filter(
+        (produto, index, array) => array.findIndex(p => p.category.name === produto.category.name) === index
+      );
+      
+      const categories = items.map((item) => item.category)
+      
+      state.categories = categories
       state.loading = false
-    })
-    .addCase(readCategoriesRequest, (state) => {
-      state.loadingCategories = true
-    })
-    .addCase(readCategoriesSuccess, (state, action) => {
-      state.categories = action.payload
-      state.loadingCategories = false
     })
     .addCase(searchProductSuccess, (state, action) => {
       state.data = action.payload

@@ -1,18 +1,13 @@
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { readCategoriesRequest, readProductsRequest, searchProductByCategoryRequest } from '@/store/reducer/product/actions';
+import { readProductsRequest, searchProductByCategoryRequest } from '@/store/reducer/product/actions';
 import { Category } from '@/types/Category';
-import { useEffect } from 'react';
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
 export const FiltersProduct = () => {
   const { categories } = useAppSelector(state => state.product);
   const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    dispatch(readCategoriesRequest())
-  }, [])
   
   const searchProductsByCategory = (category:string) => {
     if (category === 'all'){

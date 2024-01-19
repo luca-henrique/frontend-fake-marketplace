@@ -1,27 +1,20 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 import api from '@/service';
 import {
- readCategoriesSuccess,readProductsSuccess, searchProductByCategorySuccess, searchProductSuccess
+  readProductsSuccess, searchProductByCategorySuccess, searchProductSuccess
 } from './actions';
 
 
-function* readProduct(): unknown  {
+function* readProduct(): unknown {
   try {
-    const {data} = yield call(api.get, 'products');
+    const { data } = yield call(api.get, 'products');
     yield put(readProductsSuccess(data));
   } catch (e) {
     console.log(e);
   }
 }
 
-function* readCategories():unknown {
-  try {
-    const {data} = yield call(api.get, `/categories`);
-    yield put(readCategoriesSuccess(data));
-  } catch (e) {
-    console.log(e);
-  }
-}
+
 
 //@ts-expect-error: Type 
 function* searchProduct({ payload }: unknown): unknown {
@@ -46,7 +39,6 @@ function* searchProductByCategory({ payload }: unknown): unknown {
 function* postsSaga() {
   yield all([
     takeLatest('product/read-products-request', readProduct),
-    takeLatest('product/read-products-request', readCategories),
     takeLatest('product/search-product-request', searchProduct),
     takeLatest('product/search-product-by-category-request', searchProductByCategory),
   ]);
