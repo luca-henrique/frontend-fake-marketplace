@@ -75,8 +75,9 @@ export const Checkout = () => {
         <CheckoutCard className="text-white">
           <div className="flex flex-col justify-between h-full">
             <div>
-              <p className='font-bold'>Total do pedido: {numberFormatBr(total || 0)}</p>
-              <p>Quantidade de produtos: {count || 0}</p>
+              <p>Valor Total do Pedido:</p>
+              <p className='font-bold text-xl'>{numberFormatBr(total || 0)}</p>
+              <p className='mt-4'>Quantidade de produtos: {count || 0}</p>
             </div>
             <Button className="mt-8" onClick={() => dispatch(clearCart())}>CHECKOUT</Button>
           </div>
