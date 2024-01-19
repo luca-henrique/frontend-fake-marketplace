@@ -7,7 +7,7 @@ export const CheckoutCard = (props: CardProps) => {
   return (
     <div
       {...props}
-      className={`w-auto bg-black flex flex-col items-center justify-center p-8 border  border-neutral-900 rounded-xl ${className}`}
+      className={`w-auto bg-black items-center justify-center p-8 border  border-neutral-900 rounded-xl ${className}`}
     >
       {children}
     </div>

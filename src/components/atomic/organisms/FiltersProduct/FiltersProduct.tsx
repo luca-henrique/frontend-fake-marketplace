@@ -23,7 +23,7 @@ export const FiltersProduct = () => {
   }
 
   return (
-    <div className='border border-neutral-900 rounded-xl p-8 mt-10'>
+    <div className='border border-neutral-900 rounded-xl p-8 mt-10 max-h-32 sm:max-h-max overflow-y-auto sm:overflow-y-clip'>
       <p className='font-semibold text-sky-50 mb-4'>Filtros</p>
       <RadioGroup defaultValue="all" onValueChange={searchProductsByCategory}>
         <div className="flex items-center space-x-2">

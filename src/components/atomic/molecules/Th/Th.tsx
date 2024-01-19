@@ -4,5 +4,5 @@ interface ThProps extends HTMLProps<HTMLTableCellElement> {}
 
 export const Th = (props: ThProps) => {
   const { className } = props;
-  return <th {...props} className={`text-muted-foreground p-4 text-center align-middle font-medium ${className}`}></th>;
+  return <th {...props} className={`text-muted-foreground p-4 text-center align-middle font-medium text-xs sm:text-base ${className}`}></th>;
 };

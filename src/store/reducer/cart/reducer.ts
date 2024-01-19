@@ -1,30 +1,53 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { addProductCart, removeProductCart } from "./actions";
+import { addProductCart, clearCart, removeProductCart } from "./actions";
 
 import { initialState } from "./initialState";
 
 export const cartReducer = createReducer(initialState, (builder) => {
   builder
+    .addCase(clearCart, (state) => {
+      state.data = [];
+    })
     .addCase(addProductCart, (state, action) => {
       const cart = [...state.data];
-      let total = state.total;
-      total += action.payload.price;
-      cart.push({ ...action.payload, countProduct: 1 });
+      const { id } = action.payload;
+      const product = cart.find((p) => p.id === id);
+      if (product) {
+        product.countProduct++;
+        cart.filter((p) => p.id !== id).push(product);
+      } else {
+        cart.push({ ...action.payload, countProduct: 1 });
+      }
       state.data = cart;
-      state.count += 1;
-      state.total = total;
+      state.total = cart
+        ?.map((product) => product.price * product.countProduct)
+        ?.reduce((acc, curr) => acc + curr);
+      state.count = cart
+        ?.map((product) => product.countProduct)
+        ?.reduce((acc, curr) => acc + curr);
     })
     .addCase(removeProductCart, (state, action) => {
       const { id, type } = action.payload;
       const cart = [...state.data];
       const product = cart.find((p) => p.id === id);
       if (!product) return;
-      const cartWithout = cart.filter((p) => p.id !== id);
+      const index = cart.indexOf(product);
       if (type === "+") product.countProduct++;
       else product.countProduct--;
-      state.data = [
-        ...cartWithout,
-        ...(product && product?.countProduct > 0 ? [product] : []),
-      ];
+      if (product.countProduct > 0) cart[index] = product;
+      else cart?.splice(index, 1);
+      state.data = cart || [];
+      state.total =
+        cart?.length > 0
+          ? cart
+              ?.map((product) => product.price * product.countProduct)
+              ?.reduce((acc, curr) => acc + curr)
+          : 0;
+      state.count =
+        cart?.length > 0
+          ? cart
+              ?.map((product) => product.countProduct)
+              ?.reduce((acc, curr) => acc + curr)
+          : 0;
     });
 });
