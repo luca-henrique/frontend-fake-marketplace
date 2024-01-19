@@ -24,7 +24,7 @@ const customStyles = {
 export const CatalogProductList = () => {
   const {data} = useAppSelector((state) => state.product)
   const [visibleModalDetail, setVisibleModalDetail] = useState(false);
-  const [product,setProduct] = useState<ProductType | undefined>();
+  const [product,setProduct] = useState<ProductType>({} as ProductType);
   const dispatch = useAppDispatch();
   
   function handleOpenDetailProduct(item:ProductType) {
