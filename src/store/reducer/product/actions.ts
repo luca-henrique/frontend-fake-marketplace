@@ -11,3 +11,6 @@ export const readCategoriesSuccess = createAction<Category[]>('product/read-cate
 
 export const searchProductRequest = createAction<string>('product/search-product-request');
 export const searchProductSuccess = createAction<ProductType[]>('product/search-product-success');
+
+export const searchProductByCategoryRequest = createAction<string>('product/search-product-by-category-request');
+export const searchProductByCategorySuccess = createAction<ProductType[]>('product/search-product-by-category-success');

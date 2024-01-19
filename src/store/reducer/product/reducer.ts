@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import {
-  readProductsRequest, readProductsSuccess, readCategoriesRequest, readCategoriesSuccess, searchProductSuccess
+  readProductsRequest, readProductsSuccess, readCategoriesRequest, readCategoriesSuccess, searchProductSuccess, searchProductByCategorySuccess
 } from './actions';
 
 import { initialState } from './initialState';
@@ -22,6 +22,9 @@ export const productReducer = createReducer(initialState, (builder) => {
       state.loadingCategories = false
     })
     .addCase(searchProductSuccess, (state, action) => {
+      state.data = action.payload
+    })
+    .addCase(searchProductByCategorySuccess, (state, action) => {
       state.data = action.payload
     })
 });
