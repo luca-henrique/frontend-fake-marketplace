@@ -14,10 +14,19 @@ export const store = configureStore({
   middleware: () => new Tuple(sagaMiddleware, logger),
 });
 
+
+export function setupStore(preloadedState?: Partial<RootState>) {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState
+  })
+}
+
 sagaMiddleware.run(rootSaga);
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
+export type AppStore = ReturnType<typeof setupStore>
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   RootState,

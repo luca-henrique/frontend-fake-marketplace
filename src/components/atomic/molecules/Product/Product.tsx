@@ -1,7 +1,7 @@
-import { Button } from '@/components/ui/button';
-import { ProductType } from '@/types/Product'
-import { numberFormatBr } from '@/util/numberFormater'
-import { textShrink } from '@/util/textShrink';
+import { Button } from '../../../../components/ui/button';
+import { ProductType } from '../../../../types/Product'
+import { numberFormatBr } from '../../../../util/numberFormater'
+import { textShrink } from '../../../../util/textShrink';
 
 import "./style.css"
 import { ProductImage } from './ProductImage';
@@ -11,8 +11,7 @@ interface ProductTypeProps extends ProductType {
   handleOpenDetailProduct?:() => void
 }
 
-export const Product = ({ id, title, price, description, category, images, onClick, handleOpenDetailProduct }: ProductTypeProps) => {
-  
+export const Product = ({ title, price, description, category, images, onClick, handleOpenDetailProduct }: ProductTypeProps) => {
   return(
     <div className="w-[400px] bg-black mb-4 flex flex-col items-center justify-center p-8 border border-neutral-900 rounded-xl">
       <button onClick={handleOpenDetailProduct}>

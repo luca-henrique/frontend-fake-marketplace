@@ -1,7 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from '@/pages/Home/Home';
 import NotFound from '@/pages/NotFound/NotFound';
-import { ProductDetail } from '@/pages/ProductDetail/ProductDetail';
 import { Checkout } from '@/pages/Checkout/Checkout';
 
 export const router = createBrowserRouter([
@@ -9,10 +8,6 @@ export const router = createBrowserRouter([
     path: "/",
     element: <App />,
     errorElement: <NotFound />,
-  },
-  {
-    path: "/product-detail/:id",
-    element: <ProductDetail />,
   },
   {
     path: "/checkout",

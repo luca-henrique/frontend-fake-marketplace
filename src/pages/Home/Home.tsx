@@ -1,8 +1,8 @@
-import { CatalogProductList } from "@/components/atomic/organisms/CatalogProductList/CatalogProductList";
-import { FiltersProduct } from "@/components/atomic/organisms/FiltersProduct/FiltersProduct";
-import { Input } from "../../components/atomic/atom/Input/Input";
-import { useSearchProduct } from "../../hooks/useSearchProduct";
-import { PageLayout } from "@/components/atomic/layout/HomeLayout";
+import { CatalogProductList } from '../../components/atomic/organisms/CatalogProductList/CatalogProductList';
+import { FiltersProduct } from '../../components/atomic/organisms/FiltersProduct/FiltersProduct';
+import { Input } from '../../components/atomic/atom/Input/Input';
+import { useSearchProduct } from '../../hooks/useSearchProduct';
+import { PageLayout } from '../../components/atomic/layout/HomeLayout';
 
 function App() {
   const { setInputSearch } = useSearchProduct();
