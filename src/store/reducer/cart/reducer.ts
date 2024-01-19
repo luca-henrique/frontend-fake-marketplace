@@ -11,7 +11,7 @@ export const cartReducer = createReducer(initialState, (builder) => {
       const cart = [...state.data]
       let total = state.total
       total += action.payload.price
-      cart.push(action.payload)
+      cart.push({ ...action.payload, countProduct:1 })
       state.data = cart;
       state.count += 1
       state.total = total

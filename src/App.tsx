@@ -1,60 +1,20 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { useContext } from 'react';
-import { CatalogContext, CatalogType } from './contexts/ProductContext';
-import { Category } from './types/Category';
-import { useSearchParams } from 'react-router-dom';
-import { CatalogProductList } from './components/atomic/organisms/CatalogProductList/CatalogProductList';
-import { Header } from './components/atomic/organisms/Header/Header';
-
+import { CatalogProductList } from '@/components/atomic/organisms/CatalogProductList/CatalogProductList';
+import { Header } from '@/components/atomic/organisms/Header/Header';
+import { FiltersProduct } from '@/components/atomic/organisms/FiltersProduct/FiltersProduct';
+import { Input } from './components/atomic/atom/Input/Input';
+import { useSearchProduct } from './hooks/useSearchProduct';
 
 function App() {
+  const {setInputSearch} = useSearchProduct()
+  
   return (
     <div className='bg-black'>
       <Header />
-
-     
-      {/*
-
-      <div><input type='search' placeholder='buscar produto' /></div>
-
-      <FilterProduct /> */}
+      <Input onChange={setInputSearch} />
+      <FiltersProduct /> 
       <CatalogProductList />
     </div>
   )
-}
-
-
-
-
-
-export const FilterProduct = () => {
-  const { categories } = useContext(CatalogContext) as CatalogType;
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const handleRouter = (indexCategory: string) => {
-    setSearchParams({ category: indexCategory });
-
-    if (indexCategory == '0') {
-      searchParams.delete("category");
-      setSearchParams(searchParams);
-    }
-  }
-
-  return (
-    <div>
-      <div>
-        <label>Tudo</label>
-        <input type="checkbox" title='categories' onClick={() => handleRouter('0')} />
-      </div>
-      {categories.map((category: Category) =>
-        <div key={category.id}>
-          <label>{category.name}</label>
-          <input type="checkbox" value={category.name} title='categories' onClick={() => handleRouter(category.id)} />
-        </div>
-      )}
-    </div>
-  )
-
 }
 
 export default App

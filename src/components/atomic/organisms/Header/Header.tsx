@@ -1,10 +1,10 @@
 
+import { useAppSelector } from '@/hooks/useAppSelector';
 import { CiShoppingBasket } from "react-icons/ci";
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 export const Header = () => {
-  const {count} = useSelector((state )=> state.cart)
+  const {count} = useAppSelector((state )=> state.cart)
   
   return(
     <header className="py-4 px-5 md:px-24  lg:px-40 relative w-full border-b border-neutral-900">

@@ -1,4 +1,4 @@
-import { ProductType } from '@/types/Product';
 import { createAction } from '@reduxjs/toolkit';
+import { ProductCart } from './types';
 
-export const addProductCart = createAction<ProductType>('cart/add-product-cart');
+export const addProductCart = createAction<ProductCart>('cart/add-product-cart');
