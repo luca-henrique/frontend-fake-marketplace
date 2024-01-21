@@ -12,7 +12,8 @@ import { Button } from "@/components/ui/button";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { clearCart, removeProductCart } from "@/store/reducer/cart/actions";
 import { ProductCart } from "@/store/reducer/cart/types";
-import { numberFormatBr } from "@/util/numberFormater";
+import { priceFormatterCurrencyBr } from '@/utils';
+
 import { CiShoppingCart } from "react-icons/ci";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -41,13 +42,13 @@ export const Checkout = () => {
   }
 
   return (
-    <PageLayout title="Checkout">
-      <div className="flex flex-col sm:flex-row gap-2">
-        <CheckoutCard className="block sm:flex sm:justify-center flex-1 overflow-x-auto">
+    <PageLayout title='Checkout'>
+      <div className='flex flex-col sm:flex-row gap-2'>
+        <CheckoutCard className='block sm:flex sm:justify-center flex-1 overflow-x-auto'>
           <CheckoutTable>
             <thead>
               <Tr>
-                <Th style={{ textAlign: "left" }}>Produto</Th>
+                <Th style={{textAlign: 'left'}}>Produto</Th>
                 <Th>Preço</Th>
                 <Th>Quantidade</Th>
                 <Th>Subtotal</Th>
@@ -56,30 +57,36 @@ export const Checkout = () => {
             <tbody>
               {data?.map((item: ProductCart, index: number) => (
                 <Tr key={`${index}-${item?.id}`}>
-                  <Td style={{ textAlign: "left" }}>{item?.title}</Td>
-                  <Td>{numberFormatBr(item?.price)}</Td>
+                  <Td style={{textAlign: 'left'}}>{item?.title}</Td>
+                  <Td>{priceFormatterCurrencyBr(item?.price)}</Td>
                   <Td>
                     <CheckoutQuantity
                       quantity={item?.countProduct}
                       onAddProduct={(type: AddType) =>
-                        dispatch(removeProductCart({ id: item?.id, type }))
+                        dispatch(removeProductCart({id: item?.id, type}))
                       }
                     />
                   </Td>
-                  <Td>{numberFormatBr(item?.price * item?.countProduct)}</Td>
+                  <Td>
+                    {priceFormatterCurrencyBr(item?.price * item?.countProduct)}
+                  </Td>
                 </Tr>
               ))}
             </tbody>
           </CheckoutTable>
         </CheckoutCard>
-        <CheckoutCard className="text-white">
-          <div className="flex flex-col justify-between h-full">
+        <CheckoutCard className='text-white'>
+          <div className='flex flex-col justify-between h-full'>
             <div>
               <p>Valor Total do Pedido:</p>
-              <p className='font-bold text-xl'>{numberFormatBr(total || 0)}</p>
+              <p className='font-bold text-xl'>
+                {priceFormatterCurrencyBr(total || 0)}
+              </p>
               <p className='mt-4'>Quantidade de produtos: {count || 0}</p>
             </div>
-            <Button className="mt-8" onClick={() => dispatch(clearCart())}>CHECKOUT</Button>
+            <Button className='mt-8' onClick={() => dispatch(clearCart())}>
+              CHECKOUT
+            </Button>
           </div>
         </CheckoutCard>
       </div>

@@ -1,16 +1,20 @@
-import { ChangeEvent, useRef } from 'react';
+import { ChangeEvent, useRef, useState } from 'react';
 import { CiSearch } from "react-icons/ci";
+import { useDebaunce } from './useDebaunce';
 
 interface IInputWithUseDebaunce {
   onChange: (value: string) => void,
-  value:string
 }
 
-export const Input = ({onChange, value}: IInputWithUseDebaunce) => {
+export const InputWithDebounce = ({onChange}: IInputWithUseDebaunce) => {
+  const [displayValue, setDisplayValue] = useState('');
+
+  const debauncedChange = useDebaunce(onChange, 1500);
   const inputSearchRef = useRef(null);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange(event.target.value);
+    setDisplayValue(event.target.value);
+    debauncedChange(event.target.value);
   };
 
   const handleFocus = () => {
@@ -25,7 +29,7 @@ export const Input = ({onChange, value}: IInputWithUseDebaunce) => {
         placeholder='Pesquisar ...'
         onFocus={handleFocus}
         onChange={handleChange}
-        value={value}
+        value={displayValue}
       />
       <div className='absolute z-2 cursor-pointer inset-y-0 start-0 flex items-center ps-3'>
         <CiSearch className='p-1 w-7 h-7 text-white rounded-lg bg-orange-300' />

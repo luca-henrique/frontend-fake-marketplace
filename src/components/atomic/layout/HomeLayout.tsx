@@ -8,7 +8,7 @@ interface ParentComponentProps {
 
 export const PageLayout: React.FC<ParentComponentProps> = ({ title, children }) => {
   return(
-    <div className='bg-black'>
+    <div>
       <Header title={title} />
       <div className='py-6 px-4 md:px-22 lg:px-36'>
         {children}

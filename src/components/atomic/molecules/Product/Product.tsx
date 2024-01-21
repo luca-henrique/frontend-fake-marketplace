@@ -1,10 +1,11 @@
-import { Button } from '../../../../components/ui/button';
-import { ProductType } from '../../../../types/Product'
-import { numberFormatBr } from '../../../../util/numberFormater'
-import { textShrink } from '../../../../util/textShrink';
+
 
 import "./style.css"
 import { ProductImage } from './ProductImage';
+import { ProductType } from '@/types/Product';
+import { textShrink } from '@/utils/textShrink';
+import { priceFormatterCurrencyBr } from '@/utils';
+import { Button } from '@/components/ui/button';
 
 interface ProductTypeProps extends ProductType {
   onClick: () => void
@@ -12,21 +13,23 @@ interface ProductTypeProps extends ProductType {
 }
 
 export const Product = ({ title, price, description, category, images, onClick, handleOpenDetailProduct }: ProductTypeProps) => {
-  return(
-    <div className="w-[400px] bg-black mb-4 flex flex-col items-center justify-center p-8 border border-neutral-900 rounded-xl">
+  return (
+    <div className='w-[400px] bg-black mb-4 flex flex-col items-center justify-center p-8 border border-neutral-900 rounded-xl'>
       <button onClick={handleOpenDetailProduct}>
         <ProductImage url={images[0]} />
       </button>
-      
+
       <div className='w-full'>
-        <h5 className='font-semibold text-xl mb-2 h-auto text-gray-200 mt-2'>{title}</h5>
+        <h5 className='font-semibold text-xl mb-2 h-auto text-gray-200 mt-2'>
+          {title}
+        </h5>
       </div>
       <div className='w-full'>
-        <p className="text-grayshade-100 dark:text-grayshade-50 text-xs text-gray-200">
+        <p className='text-grayshade-100 dark:text-grayshade-50 text-xs text-gray-200'>
           {textShrink(description)}
           <button
-            className="font-semibold text-grayshade-100 dark:text-white text-xs ml-1"
-            onClick={handleOpenDetailProduct}            
+            className='font-semibold text-grayshade-100 dark:text-white text-xs ml-1'
+            onClick={handleOpenDetailProduct}
           >
             Ler mais
           </button>
@@ -38,9 +41,11 @@ export const Product = ({ title, price, description, category, images, onClick, 
         </p>
       </div>
       <div className='flex flex-row justify-between w-full mt-2 items-center '>
-        <h5 className='text-gray-200 text-lg'>{numberFormatBr(price)}</h5>
+        <h5 className='text-gray-200 text-lg'>
+          {priceFormatterCurrencyBr(price)}
+        </h5>
         <Button onClick={() => onClick()}>Adicionar ao carrinho</Button>
       </div>
     </div>
-  )
+  );
 }

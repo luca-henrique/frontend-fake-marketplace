@@ -1,4 +1,4 @@
-import { formatterUrlImage } from '../../../../util/formatterUrlImage'
+import { formatterUrlImage } from '../../../../utils/formatterUrlImage'
 import { useState } from 'react'
 
 const URL_IMG = 'https://picsum.photos/id/1/400/400'
