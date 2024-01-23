@@ -70,12 +70,13 @@
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
   },
-   "jest": {
+  "jest": {
     "testEnvironment": "jest-environment-jsdom",
     "setupFilesAfterEnv": [
       "<rootDir>/setup-tests.js"
     ],
-    "moduleNameMapper":{
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1",
       "\\.(css|less|sass|scss)$": "identity-obj-proxy",
       "\\.(gif|ttf|eot|svg)$": "<rootDir>/mocks/fileMock.js"
     },
