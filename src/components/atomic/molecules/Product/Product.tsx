@@ -1,51 +1,39 @@
-
-
-import "./style.css"
-import { ProductImage } from './ProductImage';
-import { ProductType } from '@/types/Product';
-import { textShrink } from '@/utils/textShrink';
-import { priceFormatterCurrencyBr } from '@/utils';
-import { Button } from '@/components/ui/button';
+import './style.css';
+import {ProductImage} from './ProductImage';
+import {ProductType} from '@/types/Product';
+import {textShrink} from '@/utils/textShrink';
+import {priceFormatterCurrencyBr} from '@/utils';
+import {Button} from '@/components/ui/button';
 
 interface ProductTypeProps extends ProductType {
-  onClick: () => void
-  handleOpenDetailProduct?:() => void
+  onClick: () => void;
+  handleOpenDetailProduct?: () => void;
 }
 
-export const Product = ({ title, price, description, category, images, onClick, handleOpenDetailProduct }: ProductTypeProps) => {
+export const Product = ({
+  title,
+  price,
+  description,
+  category,
+  images,
+  onClick,
+  handleOpenDetailProduct,
+}: ProductTypeProps) => {
   return (
-    <div className='w-[400px] bg-black mb-4 flex flex-col items-center justify-center p-8 border border-neutral-900 rounded-xl'>
+    <div>
       <button onClick={handleOpenDetailProduct}>
         <ProductImage url={images[0]} />
       </button>
-
-      <div className='w-full'>
-        <h5 className='font-semibold text-xl mb-2 h-auto text-gray-200 mt-2'>
-          {title}
-        </h5>
-      </div>
-      <div className='w-full'>
-        <p className='text-grayshade-100 dark:text-grayshade-50 text-xs text-gray-200'>
-          {textShrink(description)}
-          <button
-            className='font-semibold text-grayshade-100 dark:text-white text-xs ml-1'
-            onClick={handleOpenDetailProduct}
-          >
-            Ler mais
-          </button>
-        </p>
-      </div>
-      <div className='w-full mt-2'>
-        <p className='text-gray-200 border-gray-500 border w-min p-2 rounded-md'>
-          {category.name}
-        </p>
-      </div>
-      <div className='flex flex-row justify-between w-full mt-2 items-center '>
-        <h5 className='text-gray-200 text-lg'>
-          {priceFormatterCurrencyBr(price)}
-        </h5>
-        <Button onClick={() => onClick()}>Adicionar ao carrinho</Button>
+      <h5>{title}</h5>
+      <p>
+        {textShrink(description)}
+        <button onClick={handleOpenDetailProduct}>Ler mais</button>
+      </p>
+      <p>{category.name}</p>
+      <div>
+        <h5>{priceFormatterCurrencyBr(price)}</h5>
+        <button onClick={() => onClick()}>Adicionar ao carrinho</button>
       </div>
     </div>
   );
-}
+};

@@ -3,7 +3,7 @@ import { CiSearch } from "react-icons/ci";
 
 interface IInputWithUseDebaunce {
   onChange: (value: string) => void,
-  value:string
+  value?:string
 }
 
 export const Input = ({onChange, value}: IInputWithUseDebaunce) => {
@@ -26,6 +26,7 @@ export const Input = ({onChange, value}: IInputWithUseDebaunce) => {
         onFocus={handleFocus}
         onChange={handleChange}
         value={value}
+        data-testid="default-input-testid"
       />
       <div className='absolute z-2 cursor-pointer inset-y-0 start-0 flex items-center ps-3'>
         <CiSearch className='p-1 w-7 h-7 text-white rounded-lg bg-orange-300' />

@@ -1,0 +1,12 @@
+$layout-name: 'l-header';
+
+.#{$layout-name} {
+  grid-area: header;
+  height: rem(70);
+  
+  background-color: var(--color-pastel);
+  
+  @include breakpoint(large-up) {
+    display: grid;
+  }
+}
